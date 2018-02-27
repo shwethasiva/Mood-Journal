@@ -64,8 +64,8 @@ local machine by running:
 
 ```shell
 $ git clone \
-      git@github.com:hmeinertrita/MyPlanetGirlGuides.git
-$ cd MyPlanetGirlGuides
+      git@github.com:shwethasiva/Mood-Journal.git
+$ cd Mood-Journal
 ```
 
 ### 2. Run `yarn install`
