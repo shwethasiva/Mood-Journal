@@ -1,0 +1,85 @@
+.root {
+  margin: 10px;
+  flex-shrink: 1;
+
+}
+
+.users {
+
+  flex-shrink: 1;
+  margin: 10px 0px;
+  width: 170px;
+  height: 115px;
+  overflow: auto;
+
+  border-radius: 20px;
+  border: 2px solid silver;
+}
+
+.hashtags {
+
+  flex-shrink: 1;
+  margin: 10px 0px;
+  width: 170px;
+  height: 115px;
+  overflow: auto;
+
+  border-radius: 20px;
+  border: 2px solid silver;
+}
+
+.instructions {
+  width: 160px;
+  color: silver;
+  font-size: 12px;
+}
+
+.entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0.7;
+
+  flex-shrink: 0;
+  flex-grow: 0;
+
+  width: 145px;
+  height: 24px;
+  margin: 10px;
+
+  font-size: 7;
+  color: #878c96;
+  background-color: #e6e9ef;
+  border: 2px solid;
+  border-radius: 5px;
+}
+
+
+
+.deleteButton {
+  margin: 0 5px;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.entryLabel {
+  margin-left: 5px;
+}
+
+.entrySymbol {
+  margin-left: 5px;
+  color: #d0d8e8;
+}
+
+.addForm {
+  width: 180px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.addField {
+  width: 150px;
+  border-radius: 12px;
+  border: 2px solid silver;
+}
