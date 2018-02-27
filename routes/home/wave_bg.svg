@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1024 379" enable-background="new 0 0 1024 379" xml:space="preserve">
+<filter  width="106.8%" height="118.8%" x="-3.4%" y="-9.4%" filterUnits="objectBoundingBox" id="filter-4">
+	<feGaussianBlur  stdDeviation="20" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+	<feOffset  in="shadowBlurInner1" dy="30" dx="0" result="shadowOffsetInner1"></feOffset>
+	<feComposite  k2="-1" k3="1" operator="arithmetic" in2="SourceAlpha" in="shadowOffsetInner1" result="shadowInnerInner1">
+		</feComposite>
+	<feColorMatrix  type="matrix" in="shadowInnerInner1" values="0 0 0 0 0   0 0 0 0 0.824561404   0 0 0 0 1  0 0 0 0.5 0">
+		</feColorMatrix>
+</filter>
+<filter  width="101.4%" height="104.2%" x="-0.7%" y="-1.5%" filterUnits="objectBoundingBox" id="filter-2">
+	<feOffset  in="SourceAlpha" dy="2" dx="0" result="shadowOffsetOuter1"></feOffset>
+	<feGaussianBlur  stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+	
+		<feColorMatrix  type="matrix" in="shadowBlurOuter1" values="0 0 0 0 0.93452381   0 0 0 0 0.93452381   0 0 0 0 0.93452381  0 0 0 0.5 0">
+		</feColorMatrix>
+</filter>
+<desc>Created with Sketch.</desc>
+<g id="Welcome">
+	<g id="Desktop" transform="translate(0.000000, -208.000000)">
+		<g id="Path-3" opacity="0.4">
+			<g filter="url(#filter-2)">
+				<path id="path-1_2_" d="M0,343.4c17.2-14.6,41.8-21.8,73.9-21.6c109.2,0.7,119.8,100.3,230,100.5
+					c110.2,0.2,221.3-167.1,377.8-169.4c61.7-0.9,175.8,34.5,342.2,106.2V587H0V343.4z"/>
+			</g>
+			<g>
+				<path id="path-1_1_" fill="#00BCE4" d="M0,343.4c17.2-14.6,41.8-21.8,73.9-21.6c109.2,0.7,119.8,100.3,230,100.5
+					c110.2,0.2,221.3-167.1,377.8-169.4c61.7-0.9,175.8,34.5,342.2,106.2V587H0V343.4z"/>
+			</g>
+		</g>
+		<g id="Path-4" opacity="0.65">
+			<g>
+				<path id="path-3" fill="#66E4FF" d="M0,480.6c100.7-73.7,189.8-110.6,267.4-110.6c143.1,0,165.4,60.1,300.7,58.9
+					c186.2-1.7,316.4-175.8,455.9-215c0,0,0,124.3,0,373H0V480.6z"/>
+			</g>
+			<g filter="url(#filter-4)">
+				<path id="path-3_2_" d="M0,480.6c100.7-73.7,189.8-110.6,267.4-110.6c143.1,0,165.4,60.1,300.7,58.9
+					c186.2-1.7,316.4-175.8,455.9-215c0,0,0,124.3,0,373H0V480.6z"/>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>
