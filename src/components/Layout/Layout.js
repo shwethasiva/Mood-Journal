@@ -19,6 +19,8 @@ import Footer from '../Footer';
 
 class Layout extends React.Component {
   static propTypes = {
+    //isRequired to make sure that a warning is shown if
+    //the prop is not provided
     children: PropTypes.node.isRequired,
   };
 

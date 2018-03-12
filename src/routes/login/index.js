@@ -12,7 +12,9 @@ import Layout from '../../components/Layout';
 import Login from './Login';
 
 const title = 'Hello';
-
+//set up all the code to load the entire page
+//always the basic layout and structure of the page
+//
 function action() {
   return {
     chunks: ['login'],

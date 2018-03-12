@@ -8,10 +8,11 @@
  */
 
 /*eslint-disable */
-
+//this is the backend stuff
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
+//import your css styles.
 import s from './Login.css';
 
 import {connect} from 'react-redux';

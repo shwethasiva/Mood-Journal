@@ -9,6 +9,7 @@
 
 import React from 'react';
 import Home from './Home';
+//Layout
 import Layout from '../../components/Layout';
 
 function action() {
@@ -22,5 +23,5 @@ function action() {
     ),
   };
 }
-
+// the dispatch of the action
 export default action;

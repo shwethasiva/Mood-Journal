@@ -2,6 +2,9 @@
 
 ## Team Members
 * Shwetha Sivakumar
+* Nicholas Chan
+* Jeremie Bedard
+* Michelle Ye
 
 ## Problem statement
 
@@ -104,10 +107,17 @@ the compiled output files are not optimized and minimized in this case.
   * [The Future of React](https://github.com/reactjs/react-future)
   * [Learn ES6](https://babeljs.io/docs/learn-es6/), [ES6 Features](https://github.com/lukehoban/es6features#readme)
 
----
+--
 Based off of the [react-starter-kit](https://github.com/kriasoft/react-starter-kit)
 
 \[rsk]: https://www.reactstarterkit.com
 <br>
 \[demo]: http://demo.reactstarterkit.com
 <br>
+
+## Getting mongodb running locally
+1. download mongo https://www.mongodb.com/download-center#community
+2. open command line and type in "mongo". If it doesn't open, add the directory mongo is located to your environment variables by going to system settings -> environment variables -> PATH -> new -> "C:\ProgramFiles\MongoDB\Server\3.6\bin"
+3. in mongo shell, type "mongo use mood-journal" to set up a database called mood-journal
+4. open up another shell and type "mongod", this will get the local server hosting your database running
+5. run 'yarn start'and the app should be connected to the database, look for "mongo connection successful" in your code.

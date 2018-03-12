@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import isEqual from 'lodash/isEqual'
-import cloneDeep from 'lodash/cloneDeep'
+import isEqual from 'lodash.isequal'
+import cloneDeep from 'lodash.clonedeep'
 import AbstractWidget from './AbstractWidget'
 
 export default class Share extends React.Component {

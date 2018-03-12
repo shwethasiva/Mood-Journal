@@ -127,7 +127,8 @@ app.use(
 //
 // Connect to MongoDB
 // -----------------------------------------------------------------------------
-mongoose.connect('mongodb://localhost/react-tweets');
+//set up a database on your local machine that corresponds with the url below
+mongoose.connect('mongodb://127.0.0.1:27017/mood-journal');
 let db = mongoose.connection;
 
 db.on('error', function (err) {
