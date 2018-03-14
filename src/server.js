@@ -141,8 +141,50 @@ db.once('open', function () {
   console.log('Mongoose connection successful.');
 });
 //testing route.
-app.get('/test/test/test', function(req, res){
+//need a route to read all entries, read your entries with params, insert one
+//DONE
+app.get('/api/entries/all', function(req, res){
   Entry.getAll({}, 0, function(entries){
+    console.log(entries);
+    res.send(entries);
+  });
+})
+//accept json object sent with the needed parameters
+//https://stackoverflow.com/questions/38510640/how-to-make-a-rest-post-call-from-reactjs-code
+function isJson(str) {
+    try {
+        JSON.parse(str);
+    } catch (e) {
+        return false;
+    }
+    return true;
+}
+//create new entry
+app.get('/api/entries/create', function(req, res){
+  //double chcek if this is properly formatted first, the rest of the checking will occur in the model
+  //no need to track the date
+  let test = {
+    date: Date(),
+    writtenBy: "Postman",
+    body: "testing 123",
+    sentiment: "neutral"
+  }
+  Entry.addEntry(test, function(confirm){
+      console.log(confirm);
+      res.send(confirm)
+    })
+  // if(isJson(req.body.entry)){
+  //   let entry = req.body.entry
+  //   Entry.addEntry(entry, function(confirm){
+  //     console.log(confirm);
+  //     res.send(confirm);
+  //   }
+  // )}
+})
+//api route to find all the entries that are written
+app.get('/api/entries/find/:name', function(req, res){
+  console.log(req.params.name)
+  Entry.getEntries({writtenBy: req.params.name}, 0, function(entries){
     console.log(entries);
     res.send(entries);
   });

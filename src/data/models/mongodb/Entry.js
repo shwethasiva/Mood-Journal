@@ -14,10 +14,12 @@ var schema = new mongoose.Schema({
   },
   body: {
     type: String,
-    required: true
+    required: true,
+    default: ""
   },
   sentiment: {
-    type: String
+    type: String,
+    default: "neutral"
   }
 });
 //create a custom query method to return entries based on desired fields. only required field is writtenBy
@@ -35,8 +37,9 @@ schema.statics.getEntries = function(queryBuild, skip, callback) {
     writtenBy: queryBuild.writtenBy
   }
   let entries = [];
-  query.date = (queryBuild.date ? queryBuild.date : null);
-  query.sentiment = (queryBuild.sentiment ? queryBuild.sentiment : null);
+  //programatically build your query, so you have the option of finding entries with whatever parameters you would like
+  // query.date = (queryBuild.date ? queryBuild.date : null);
+  // query.sentiment = (queryBuild.sentiment ? queryBuild.sentiment : null);
   Entry.find(query).sort({date: 'desc'}).exec(function(err, docs){
     if(err){
       console.error(err);
@@ -62,6 +65,24 @@ schema.statics.getAll = function(empty, skip, callback) {
     }
   })
 }
+//the logic for adding a new entry
+schema.statics.addEntry = function(new_entry, callback) {
+  let doc = {
+    date: Date()
+  }
+  doc.writtenBy = (new_entry.writtenBy ? new_entry.writtenBy : "Anonymous");
+  doc.sentiment = (new_entry.sentiment ? new_entry.sentiment : "neutral");
+  doc.body = (new_entry.body ? new_entry.body : "Lorem ipsum");
 
+  Entry.create(new_entry, function(err, confirm){
+    if(err){
+      console.error(err)
+    }
+    if(!err){
+      //returns the confirmation object
+      callback(confirm)
+    }
+  })
+}
 // Return an Entry model based on the define schema
 module.exports = Entry = mongoose.model('Entry', schema);
