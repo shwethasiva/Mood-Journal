@@ -146,7 +146,6 @@ app.get('/test/test/test', function(req, res){
     console.log(entries);
     res.send(entries);
   });
-  res.send('testing');
 })
 //
 // Twitter API

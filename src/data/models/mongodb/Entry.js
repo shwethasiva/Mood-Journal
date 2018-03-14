@@ -17,7 +17,7 @@ var schema = new mongoose.Schema({
     required: true
   },
   sentiment: {
-    type: mongoose.Schema.Types.Any
+    type: String
   }
 });
 //create a custom query method to return entries based on desired fields. only required field is writtenBy
@@ -48,7 +48,7 @@ schema.statics.getEntries = function(queryBuild, skip, callback) {
     }
   })
 }
-//get all
+//get all3
 schema.statics.getAll = function(empty, skip, callback) {
   let entries = [];
   Entry.find({}).sort({date: 'desc'}).exec(function(err, docs){
