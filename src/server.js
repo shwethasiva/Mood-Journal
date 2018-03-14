@@ -41,6 +41,8 @@ import ToneAnalyzerV3 from 'watson-developer-cloud/tone-analyzer/v3';
 
 // Require Tweet Schema
 import Tweet from './data/models/mongodb/Tweet'
+//require Entry Schema
+import Entry from './data/models/mongodb/Entry'
 import streamHandler from './data/utils/streamHandler';
 
 const app = express();
@@ -138,13 +140,20 @@ db.on('error', function (err) {
 db.once('open', function () {
   console.log('Mongoose connection successful.');
 });
-
+//testing route.
+app.get('/test/test/test', function(req, res){
+  Entry.getAll({}, 0, function(entries){
+    console.log(entries);
+    res.send(entries);
+  });
+  res.send('testing');
+})
 //
 // Twitter API
 // -----------------------------------------------------------------------------
 let twit = new twitter(config.auth.twitter);
 
-// Create twitter stream
+// Create twitter stream1
 twit.stream('statuses/filter',{ track: 'girlscouts,girlguidescanada,girlguides,girlguidescookies,myplanet'}, function(stream){
   streamHandler(stream);
 });
