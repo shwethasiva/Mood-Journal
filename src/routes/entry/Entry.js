@@ -9,22 +9,32 @@
 
 /*eslint-disable */
 
+import styles from 'medium-editor/dist/css/medium-editor.css'
+import theme from 'medium-editor/dist/css/themes/default.css'
+
 import React from 'react';
+import withStyles from 'isomorphic-style-loader/lib/withStyles';
+
 import Parallax from 'react-springy-parallax';
+import Editor from 'react-medium-editor';
 import {connect} from 'react-redux';
 
 // Import Components
 class Entry extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: ''};
+    this.state = {
+      value: ''
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
-  handleChange(event) {
-    this.setState({value: event.target.value});
+  getInitialState() {
+      return { text: 'Fusce dapibus, tellus ac cursus commodo' };
+    }
+  handleChange(text, medium) {
+    this.setState({text: text});
   }
 
   handleSubmit(event) {
@@ -34,23 +44,41 @@ class Entry extends React.Component {
 
   render() {
     return (
-      <div>
-      <textarea name="journalEntry" form="entryForm"></textarea>
-      <form id="entryForm" onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input type="textarea" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+      <div className="app">
+        <h1>How are you feeling today?</h1>
+        <div>{this.state.text}</div>
+
+        <h3>Editor #1 (&lt;pre&gt; tag)</h3>
+        <Editor
+          tag="pre"
+          className="editor"
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
+          text={this.state.text}
+          onChange={this.handleChange}
+          options={{toolbar: {buttons: ['bold', 'italic', 'underline']}}}
+        />
+
+        <h3>Editor #2</h3>
+        <Editor
+          text={this.state.text}
+          onChange={this.handleChange}
+        />
+
+        <h3>Editor #3 (editing disabled)</h3>
+        <p>Useful for using the toolbar with customized buttons/actions</p>
+        <Editor
+          style={{ outline: 'dotted 1px', padding: 10 }}
+          text={this.state.text}
+          options={{disableEditing: true, toolbar: false }}
+        />
       </div>
     );
   }
-
 }
 
 const mapStateToProps = state => ({value: "toTimeString"});
 
-export default connect(mapStateToProps)(Entry);
+export default withStyles(styles, theme)(connect(mapStateToProps)(Entry));
 
 /*eslint-enable */
