@@ -25,7 +25,8 @@ class Entry extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ''
+      value: '',
+      title: "Super awesome title here"
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -37,7 +38,9 @@ class Entry extends React.Component {
   handleChange(text, medium) {
     this.setState({text: text});
   }
-
+  handleTitle(text, medium){
+    this.setState({title: text});
+  }
   handleSubmit(event) {
     alert('A name was submitted: ' + this.state.value);
     event.preventDefault();
@@ -47,30 +50,22 @@ class Entry extends React.Component {
     return (
       <div className="app container">
         <h1>How are you feeling today?</h1>
-        <h3>What do you want to call this?</h3>
         <Editor
           tag="pre"
           className="editor"
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
-          text={this.state.text}
-          onChange={this.handleChange}
+          text={this.state.title}
+          onChange={this.handleTitle}
           options={{toolbar: {buttons: ['bold', 'italic', 'underline']}}}
         />
 
-        <h3>Editor #2</h3>
+        <h3>{this.state.title}</h3>
         <Editor style={{height: 200 }}
           text={this.state.text}
           onChange={this.handleChange}
         />
 
-        <h3>Editor #3 (editing disabled)</h3>
-        <p>Useful for using the toolbar with customized buttons/actions</p>
-        <Editor
-          style={{ outline: 'dotted 1px', padding: 10 }}
-          text={this.state.text}
-          options={{disableEditing: true, toolbar: false }}
-        />
       </div>
     );
   }
