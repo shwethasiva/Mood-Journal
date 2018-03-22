@@ -56,6 +56,7 @@ class Html extends React.Component {
               dangerouslySetInnerHTML={{ __html: style.cssText }}
             />,
           )}
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous"></link>
         </head>
         <body>
           <div id="app" dangerouslySetInnerHTML={{ __html: children }} />

@@ -38,6 +38,7 @@
     "query-string": "^4.3.4",
     "react": "^15.5.4",
     "react-autocomplete": "^1.5.10",
+    "react-bootstrap": "^0.32.1",
     "react-dom": "^15.5.4",
     "react-dropzone": "^3.13.4",
     "react-medium-editor": "^1.8.1",

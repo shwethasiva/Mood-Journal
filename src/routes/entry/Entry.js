@@ -17,6 +17,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 
 import Parallax from 'react-springy-parallax';
 import Editor from 'react-medium-editor';
+import * as bs from 'react-bootstrap';
 import {connect} from 'react-redux';
 
 // Import Components
@@ -44,11 +45,9 @@ class Entry extends React.Component {
 
   render() {
     return (
-      <div className="app">
+      <div className="app container">
         <h1>How are you feeling today?</h1>
-        <div>{this.state.text}</div>
-
-        <h3>Editor #1 (&lt;pre&gt; tag)</h3>
+        <h3>What do you want to call this?</h3>
         <Editor
           tag="pre"
           className="editor"
@@ -60,7 +59,7 @@ class Entry extends React.Component {
         />
 
         <h3>Editor #2</h3>
-        <Editor
+        <Editor style={{height: 200 }}
           text={this.state.text}
           onChange={this.handleChange}
         />
