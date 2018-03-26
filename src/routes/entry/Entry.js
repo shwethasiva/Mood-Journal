@@ -11,13 +11,15 @@
 
 import styles from 'medium-editor/dist/css/medium-editor.css'
 import theme from 'medium-editor/dist/css/themes/default.css'
+import custom from './Entry.css'
 
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 
 import Parallax from 'react-springy-parallax';
 import Editor from 'react-medium-editor';
-import * as bs from 'react-bootstrap';
+import Button from 'react-bootstrap/lib/Button';
+import FormErrors from './FormErrors'
 import {connect} from 'react-redux';
 
 // Import Components
@@ -25,11 +27,17 @@ class Entry extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ''
+      value: '',
+      title: "",
+      text: "",
+      formErrors: {title: '', text: ''},
+    titleValid: false,
+    textValid: false
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleTitle = this.handleTitle.bind(this);
   }
   getInitialState() {
       return { text: 'Fusce dapibus, tellus ac cursus commodo' };
@@ -37,7 +45,9 @@ class Entry extends React.Component {
   handleChange(text, medium) {
     this.setState({text: text});
   }
-
+  handleTitle(text, medium){
+    this.setState({title: text});
+  }
   handleSubmit(event) {
     alert('A name was submitted: ' + this.state.value);
     event.preventDefault();
@@ -47,30 +57,28 @@ class Entry extends React.Component {
     return (
       <div className="app container">
         <h1>How are you feeling today?</h1>
-        <h3>What do you want to call this?</h3>
         <Editor
           tag="pre"
-          className="editor"
+          className="editor hideOverflow"
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
-          text={this.state.text}
-          onChange={this.handleChange}
-          options={{toolbar: {buttons: ['bold', 'italic', 'underline']}}}
+          text={this.state.title}
+          onChange={this.handleTitle}
+          options={{toolbar: {buttons: []},
+          placeholder: {text: "What do you want to title this?", hideOnClick: true}
+        }}
         />
 
-        <h3>Editor #2</h3>
-        <Editor style={{height: 200 }}
-          text={this.state.text}
-          onChange={this.handleChange}
-        />
-
-        <h3>Editor #3 (editing disabled)</h3>
-        <p>Useful for using the toolbar with customized buttons/actions</p>
+        <h3>{this.state.title}</h3>
         <Editor
-          style={{ outline: 'dotted 1px', padding: 10 }}
           text={this.state.text}
-          options={{disableEditing: true, toolbar: false }}
+          className={custom.editorBorder}
+          onChange={this.handleChange}
+          options={{placeholder: {text: 'How do you feel today?',
+          hideOnClick: true
+        }}}
         />
+        <Button>Testing</Button>
       </div>
     );
   }
@@ -78,6 +86,6 @@ class Entry extends React.Component {
 
 const mapStateToProps = state => ({value: "toTimeString"});
 
-export default withStyles(styles, theme)(connect(mapStateToProps)(Entry));
+export default withStyles(styles, theme, custom)(connect(mapStateToProps)(Entry));
 
 /*eslint-enable */

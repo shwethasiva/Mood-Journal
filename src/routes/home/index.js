@@ -15,7 +15,7 @@ import Layout from '../../components/Layout';
 function action() {
   return {
     chunks: ['home'],
-    title: 'Pocket Journal',
+    title: 'Mood Journal',
     component: (
       <Layout>
         <Home />
