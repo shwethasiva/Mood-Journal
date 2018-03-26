@@ -65,14 +65,25 @@ schema.statics.getAll = function(empty, skip, callback) {
     }
   })
 }
+schema.statics.deleteEntry = function(post_id, callback) {
+  Entry.deleteOne( {_id: post_id}, function(err, confirm){
+    if(err){
+      console.error(err)
+    }
+    if(!err){
+      //returns the confirmation object
+      callback(confirm)
+    }
+  })
+}
 //the logic for adding a new entry
 schema.statics.addEntry = function(new_entry, callback) {
   let doc = {
     date: Date()
   }
-  doc.writtenBy = (new_entry.writtenBy ? new_entry.writtenBy : "Anonymous");
-  doc.sentiment = (new_entry.sentiment ? new_entry.sentiment : "neutral");
-  doc.body = (new_entry.body ? new_entry.body : "Lorem ipsum");
+  // doc.writtenBy = (new_entry.writtenBy ? new_entry.writtenBy : "Anonymous");
+  // doc.sentiment = (new_entry.sentiment ? new_entry.sentiment : "neutral");
+  // doc.body = (new_entry.body ? new_entry.body : "Lorem ipsum");
 
   Entry.create(new_entry, function(err, confirm){
     if(err){
