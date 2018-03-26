@@ -11,13 +11,15 @@
 
 import styles from 'medium-editor/dist/css/medium-editor.css'
 import theme from 'medium-editor/dist/css/themes/default.css'
+import custom from './Entry.css'
 
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 
 import Parallax from 'react-springy-parallax';
 import Editor from 'react-medium-editor';
-import * as bs from 'react-bootstrap';
+import Button from 'react-bootstrap/lib/Button';
+import FormErrors from './FormErrors'
 import {connect} from 'react-redux';
 
 // Import Components
@@ -26,11 +28,16 @@ class Entry extends React.Component {
     super(props);
     this.state = {
       value: '',
-      title: "Super awesome title here"
+      title: "",
+      text: "",
+      formErrors: {title: '', text: ''},
+    titleValid: false,
+    textValid: false
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleTitle = this.handleTitle.bind(this);
   }
   getInitialState() {
       return { text: 'Fusce dapibus, tellus ac cursus commodo' };
@@ -52,20 +59,26 @@ class Entry extends React.Component {
         <h1>How are you feeling today?</h1>
         <Editor
           tag="pre"
-          className="editor"
+          className="editor hideOverflow"
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           text={this.state.title}
           onChange={this.handleTitle}
-          options={{toolbar: {buttons: ['bold', 'italic', 'underline']}}}
+          options={{toolbar: {buttons: []},
+          placeholder: {text: "What do you want to title this?", hideOnClick: true}
+        }}
         />
 
         <h3>{this.state.title}</h3>
-        <Editor style={{height: 200 }}
+        <Editor
           text={this.state.text}
+          className={custom.editorBorder}
           onChange={this.handleChange}
+          options={{placeholder: {text: 'How do you feel today?',
+          hideOnClick: true
+        }}}
         />
-
+        <Button>Testing</Button>
       </div>
     );
   }
@@ -73,6 +86,6 @@ class Entry extends React.Component {
 
 const mapStateToProps = state => ({value: "toTimeString"});
 
-export default withStyles(styles, theme)(connect(mapStateToProps)(Entry));
+export default withStyles(styles, theme, custom)(connect(mapStateToProps)(Entry));
 
 /*eslint-enable */
