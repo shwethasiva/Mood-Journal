@@ -54,6 +54,7 @@ npm manifest:
       "query-string": "^4.3.4",
       "react": "^15.5.4",
       "react-autocomplete": "^1.5.10",
+      "react-bootstrap": "^0.32.1",
       "react-dom": "^15.5.4",
       "react-dropzone": "^3.13.4",
       "react-medium-editor": "^1.8.1",
@@ -200,7 +201,6 @@ npm manifest:
       ]
     },
     "scripts": {
-      "precommit": "lint-staged",
       "lint-js": "eslint --ignore-path .gitignore --ignore-pattern \"!**/.*\" .",
       "lint-css": "stylelint \"src/**/*.{css,less,scss,sss}\"",
       "lint": "yarn run lint-js && yarn run lint-css",

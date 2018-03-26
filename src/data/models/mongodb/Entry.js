@@ -10,12 +10,16 @@ var schema = new mongoose.Schema({
 
   writtenBy: {
     type: String,
-    required: true
+    required: true,
+    default: "Anonymous"
   },
   body: {
     type: String,
     required: true,
-    default: ""
+  },
+  title:{
+    type: String,
+    required: true
   },
   sentiment: {
     type: String,

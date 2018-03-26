@@ -14,6 +14,7 @@ import theme from 'medium-editor/dist/css/themes/default.css'
 import custom from './Entry.css'
 
 import React from 'react';
+import axios from 'axios';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 
 import Parallax from 'react-springy-parallax';
@@ -38,6 +39,7 @@ class Entry extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTitle = this.handleTitle.bind(this);
+    this.clickHandler = this.clickHandler.bind(this);
   }
   getInitialState() {
       return { text: 'Fusce dapibus, tellus ac cursus commodo' };
@@ -51,6 +53,20 @@ class Entry extends React.Component {
   handleSubmit(event) {
     alert('A name was submitted: ' + this.state.value);
     event.preventDefault();
+  }
+  clickHandler(){
+    let entry = {}
+    entry.title = this.state.title;
+    entry.body = this.state.text;
+    console.log(entry);
+    axios({
+      method: 'post',
+      url: '/api/entries/create',
+      data: entry
+    }).then(function(response){
+      console.log(response);
+    })
+
   }
 
   render() {
@@ -78,7 +94,9 @@ class Entry extends React.Component {
           hideOnClick: true
         }}}
         />
-        <Button>Testing</Button>
+        <Button onClick={this.clickHandler}>
+        Testing
+        </Button>
       </div>
     );
   }
