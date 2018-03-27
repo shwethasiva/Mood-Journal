@@ -44,6 +44,10 @@ const routes = {
       load: () => import(/* webpackChunkName: 'twitter' */ './twitter'),
     },
     {
+      path: '/entries',
+      load: () => import(/* webpackChunkName: 'twitter' */ './entries'),
+    },
+    {
       path: '/entry',
       load: () => import(/* webpackChunkName: 'twitter' */ './entry'),
     },

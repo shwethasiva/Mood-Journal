@@ -29,7 +29,7 @@ class Header extends React.Component {
               height="38"
               alt="React"
             />
-            <span className={s.brandTxt}>Pocket Journal</span>
+            <span className={s.brandTxt}>Mood Journal</span>
           </Link>
         </div>
       </div>
