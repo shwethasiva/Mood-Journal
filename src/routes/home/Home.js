@@ -21,7 +21,7 @@ class Home extends React.Component {
           {/* <Page title="" {...home} /> */}
           <div className={s.main}>
             <div className={s.intro}>Learn about your emotions!</div>
-            <a href="/search">Get Started</a>
+            <a href="/entries">Get Started</a>
             <div className={s.bg} />
             <div className={s.bg_wave} />
           </div>

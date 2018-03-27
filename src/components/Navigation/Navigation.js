@@ -42,11 +42,8 @@ class Navigation extends React.Component {
         </Link>
         <span className={s.spacer}>or</span> */}
           <div className={cx(s.links, this.state.isToggleOn ? s.on : s.off)}>
-            <Link className={cx(s.link, s.highlight)} to="/entry">
-            Entries
-          </Link>
-            <Link className={cx(s.link, s.highlight)} to="/search">
-            Resources
+            <Link className={cx(s.link, s.highlight)} to="/entries">
+            My Entries
           </Link>
             <Link className={cx(s.link, s.highlight)} to="/watson">
             Insights
