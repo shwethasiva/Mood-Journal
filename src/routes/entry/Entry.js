@@ -57,7 +57,7 @@ class Entry extends React.Component {
   clickHandler(){
     let entry = {}
     entry.title = this.state.title;
-    entry.body = this.state.text;
+    entry.text = this.state.text;
     console.log(entry);
     axios({
       method: 'post',
