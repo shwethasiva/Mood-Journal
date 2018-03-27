@@ -30,12 +30,14 @@ import schema from './data/schema';
 import assets from './assets.json'; // eslint-disable-line import/no-unresolved
 import configureStore from './store/configureStore';
 import { setRuntimeVariable } from './actions/runtime';
+import { config as configuration } from 'dotenv';
 import config from './config';
-
 // Import Mongoose & twitter
 import mongoose from 'mongoose';
 import twitter from 'twitter';
-
+//import html sanitizer
+//import sanitizeHtml from 'sanitize-html';
+var sanitizeHtml = require('sanitize-html');
 // Import Tone Analyzer Watson API
 import ToneAnalyzerV3 from 'watson-developer-cloud/tone-analyzer/v3';
 
@@ -46,7 +48,8 @@ import Entry from './data/models/mongodb/Entry'
 import streamHandler from './data/utils/streamHandler';
 
 const app = express();
-
+configuration({path:'../.env'});
+//console.log(process.env)
 //
 // Tone Analyzer Watson API
 // -----------------------------------------------------------------------------
@@ -167,7 +170,32 @@ function isJson(str) {
     }
     return true;
 }
-//create new entry
+//create sentiment analysis
+app.post('/api/entries/create', function(req, res, next){
+  console.log(req.body.text);
+  //cleans up any html tags that affect the mood score
+  let clean = sanitizeHtml(req.body.text, {
+    allowedTags: []
+  });
+  console.log(clean)
+  let params = {
+    'tone_input': req.body.text,
+    'text': clean,
+    'content_type': 'text/plain'
+  }
+  tone_analyzer.tone(params, function(error, response){
+    if(error){
+      console.log('error:', error);
+      res.end();
+    }
+    else{
+      req.body.sentiment = response;
+      next();
+    }
+  }
+)
+
+})
 app.post('/api/entries/create', function(req, res){
   //double chcek if this is properly formatted first, the rest of the checking will occur in the model
   //no need to track the date

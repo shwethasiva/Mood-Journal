@@ -13,16 +13,17 @@ var schema = new mongoose.Schema({
     required: true,
     default: "Anonymous"
   },
-  body: {
+  text: {
     type: String,
     required: true,
   },
+
   title:{
     type: String,
     required: true
   },
   sentiment: {
-    type: String,
+    type: mongoose.Schema.Types.Mixed,
     default: "neutral"
   }
 });

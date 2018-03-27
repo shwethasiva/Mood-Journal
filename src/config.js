@@ -71,9 +71,9 @@ module.exports = {
 
     // Tone analyzer Watson-API
     watson: {
-      username: process.env.WATSON_USER,
-      password: process.env.WATSON_PASS,
-      version_date: '2016-05-19'
+      username: process.env.WATSON_USER || "382ac5bd-bfb6-4f46-a111-51d2fa14105c",
+      password: process.env.WATSON_PASS || "kIF6D3Vv2Iha",
+      version_date: '2017-09-21'
     },
   },
 };
