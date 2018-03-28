@@ -5,20 +5,20 @@ import Button from 'react-bootstrap/lib/Button';
 import Link from '../../components/Link';
 
 class Entries extends React.Component {
-	
+
 	constructor(props) {
 		super(props);
 		this.state = {
 			entries: []
 		}
 
-		
+
 
 	}
 
 	componentDidMount() {
 		let self = this;
-		axios.get('http://localhost:3000/api/entries')
+		axios.get('/api/entries')
   		.then(function (response) {
     		self.setState({entries: response.data})
     	//	self.state.entries = response.data
@@ -29,8 +29,8 @@ class Entries extends React.Component {
 	  	});
 	}
 
-	
-	
+
+
 
 	render() {
 		console.log("testing")
@@ -39,27 +39,24 @@ class Entries extends React.Component {
 
 		return (
 				<div>
-				<h1>Read your Entries!</h1>
-				<h2>Let us know how you feel.</h2>
-				<Link to="/entry">
-				<Button>
-				Create New Entry!
-				</Button>
-				</Link>
+					<h1>Read your Entries!</h1>
+					<h2>Let us know how you feel.</h2>
+					<Link to="/entry">
+						<Button>
+							Create New Entry!
+						</Button>
+					</Link>
+					<ul>
+						{
+						this.state.entries.map(function(item, i) {
+						return(
+								<div key={i}>
+									<Entry card={item}/>
+								</div>)
+						})
+					}
 
-				<ul>
-
-					{
-					this.state.entries.map(function(item, i) {
-					return(<div key={i}>
-					<Entry card={item}/>
-					<li>{item.body}</li>
-
-					</div>)
-					})
-				}
-
-				</ul>
+					</ul>
 
 				</div>
 			);
