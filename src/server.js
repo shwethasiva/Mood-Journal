@@ -148,14 +148,12 @@ db.once('open', function () {
 //DONE
 app.get('/api/entries', function(req, res){
   Entry.getAll({}, 0, function(entries){
-    console.log(entries);
     res.send(entries);
   });
 })
 app.get('/api/entries/find/:name', function(req, res){
   console.log(req.params.name)
   Entry.getEntries({writtenBy: req.params.name}, 0, function(entries){
-    console.log(entries);
     res.send(entries);
   });
 })

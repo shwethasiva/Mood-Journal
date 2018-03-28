@@ -5,7 +5,38 @@ import Button from 'react-bootstrap/lib/Button';
 import Link from '../../components/Link';
 
 class Entries extends React.Component {
+	
+	constructor(props) {
+		super(props);
+		this.state = {
+			entries: []
+		}
+
+		
+
+	}
+
+	componentDidMount() {
+		let self = this;
+		axios.get('http://localhost:3000/api/entries')
+  		.then(function (response) {
+    		self.setState({entries: response.data})
+    	//	self.state.entries = response.data
+    		console.log(response.data)
+	  	})
+	  	.catch(function (error) {
+	    	console.log(error);
+	  	});
+	}
+
+	
+	
+
 	render() {
+		console.log("testing")
+		console.log(this.state.entries);
+
+
 		return (
 				<div>
 				<h1>Read your Entries!</h1>
@@ -15,7 +46,21 @@ class Entries extends React.Component {
 				Create New Entry!
 				</Button>
 				</Link>
-				<Entry />
+
+				<ul>
+
+					{
+					this.state.entries.map(function(item, i) {
+					return(<div key={i}>
+					<Entry card={item}/>
+					<li>{item.body}</li>
+
+					</div>)
+					})
+				}
+
+				</ul>
+
 				</div>
 			);
 	}
