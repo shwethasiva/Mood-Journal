@@ -173,7 +173,10 @@ app.post('/api/entries/create', function(req, res, next){
   console.log(req.body.text);
   //cleans up any html tags that affect the mood score
   let clean = sanitizeHtml(req.body.text, {
-    allowedTags: []
+    allowedTags: [],
+    textFilter: function(text){
+      return text + ' ';
+    }
   });
   console.log(clean)
   let params = {
