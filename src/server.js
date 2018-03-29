@@ -151,9 +151,16 @@ app.get('/api/entries', function(req, res){
     res.send(entries);
   });
 })
+//find entries based on who it was written by
 app.get('/api/entries/find/:name', function(req, res){
   console.log(req.params.name)
   Entry.getEntries({writtenBy: req.params.name}, 0, function(entries){
+    res.send(entries);
+  });
+})
+//find entries based on the id of the post 
+app.get('/api/entries/findid/:id', function(req, res){
+  Entry.getEntries({ id: req.params.id}, 0, function(entries){
     res.send(entries);
   });
 })
@@ -175,6 +182,7 @@ app.post('/api/entries/create', function(req, res, next){
   let clean = sanitizeHtml(req.body.text, {
     allowedTags: [],
     textFilter: function(text){
+      //make sure that there is an additional space so watson always breaks down sentence by sentence
       return text + ' ';
     }
   });

@@ -52,6 +52,10 @@ const routes = {
       load: () => import(/* webpackChunkName: 'twitter' */ './entry'),
     },
     {
+      path: '/graph',
+      load: () => import(/* webpackChunkName: 'twitter' */ './graph'),
+    },
+    {
       path: '/watson',
       load: () => import(/* webpackChunkName: 'not-found' */ './watson'),
     },

@@ -38,8 +38,12 @@ sentiment:
 }
 */
 schema.statics.getEntries = function(queryBuild, skip, callback) {
-  let query = {
-    writtenBy: queryBuild.writtenBy
+  let query = {}
+  if(queryBuild.writtenBy){
+    query.writtenBy = queryBuild.writtenBy
+  }
+  if(queryBuild.id){
+    query._id = queryBuild.id
   }
   let entries = [];
   //programatically build your query, so you have the option of finding entries with whatever parameters you would like
