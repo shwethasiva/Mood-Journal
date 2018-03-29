@@ -24,7 +24,7 @@ class Entries extends React.Component {
 		axios.get('/api/entries')
   		.then(function (response) {
     		self.setState({entries: response.data})
-    	//	self.state.entries = response.data
+    	//self.state.entries = response.data
     		console.log(response.data)
 	  	})
 	  	.catch(function (error) {
@@ -66,7 +66,7 @@ class Entries extends React.Component {
 					}
 
 					</ul>
-				</div>	
+				</div>
 				</div>
 			);
 	}

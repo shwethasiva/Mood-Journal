@@ -158,7 +158,7 @@ app.get('/api/entries/find/:name', function(req, res){
     res.send(entries);
   });
 })
-//find entries based on the id of the post 
+//find entries based on the id of the post
 app.get('/api/entries/findid/:id', function(req, res){
   Entry.getEntries({ id: req.params.id}, 0, function(entries){
     res.send(entries);
@@ -186,7 +186,6 @@ app.post('/api/entries/create', function(req, res, next){
       return text + ' ';
     }
   });
-  console.log(clean)
   let params = {
     'tone_input': req.body.text,
     'text': clean,
@@ -198,7 +197,8 @@ app.post('/api/entries/create', function(req, res, next){
       res.end();
     }
     else{
-      req.body.sentiment = response;
+      console.log(response)
+      req.body.sentiment = response.document_tone.tones[0];
       next();
     }
   }
