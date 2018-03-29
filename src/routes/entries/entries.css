@@ -1,0 +1,29 @@
+.body {
+	align-items: center;
+}
+
+h1 {
+	color: #00549E;
+}
+
+h2 {
+	font-size: 120%;
+}
+
+h3 {
+	font-size: 200%;
+	margin-top: 0;
+}
+
+.topOfPage {
+	text-align: center;
+}
+
+.button {
+	margin: 2em;
+}
+
+.date {
+	color: lightgray;
+	font-size: 100%;
+}

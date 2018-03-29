@@ -1,8 +1,11 @@
 import React from 'react';
 import Entry from './Entry';
 import axios from 'axios';
+import withStyles from 'isomorphic-style-loader/lib/withStyles';
+
 import Button from 'react-bootstrap/lib/Button';
 import Link from '../../components/Link';
+import custom from './entries.css'
 
 class Entries extends React.Component {
 
@@ -39,13 +42,19 @@ class Entries extends React.Component {
 
 		return (
 				<div>
+				<div className={custom.body}>
+					<div className={ custom.topOfPage }>
 					<h1>Read your Entries!</h1>
-					<h2>Let us know how you feel.</h2>
+					<h2>Express how you feel. Let it all out!</h2>
+					<div className={custom.button}>
 					<Link to="/entry">
 						<Button>
 							Create New Entry!
 						</Button>
 					</Link>
+					</div>
+					</div>
+
 					<ul>
 						{
 						this.state.entries.map(function(item, i) {
@@ -57,10 +66,10 @@ class Entries extends React.Component {
 					}
 
 					</ul>
-
+				</div>	
 				</div>
 			);
 	}
 }
 
-export default Entries;
+export default withStyles(custom)(Entries);
