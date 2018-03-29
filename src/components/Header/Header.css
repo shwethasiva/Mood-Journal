@@ -27,6 +27,7 @@
 .brand {
   padding-left: 10px;
   color: color(var(--brand-color) lightness(+10%));
+  font-family: 'Open Sans', sans-serif;
   text-decoration: none;
   font-size: 1.75em; /* ~28px */
 }

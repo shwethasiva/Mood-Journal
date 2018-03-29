@@ -42,10 +42,10 @@ class Entries extends React.Component {
 
 		return (
 				<div>
-				<div className={custom.body}>
+				<div className={custom.container}>
 					<div className={ custom.topOfPage }>
 					<h1>Read your Entries!</h1>
-					<h2>Express how you feel. Let it all out!</h2>
+					<h2>Reflect on your emotions and learn about yourself.</h2>
 					<div className={custom.button}>
 					<Link to="/entry">
 						<Button>
@@ -59,7 +59,7 @@ class Entries extends React.Component {
 						{
 						this.state.entries.map(function(item, i) {
 						return(
-								<div key={i}>
+								<div className={custom.entryInstance} key={i}>
 									<Entry card={item}/>
 								</div>)
 						})

@@ -77,7 +77,16 @@ class Entry extends React.Component {
   render() {
     return (
       <div className="app container">
-        <h1>How are you feeling today?</h1>
+      <div className={custom.container}>
+      
+        <div className={ custom.topOfPage }>
+          <h1>Write an Entry!</h1>
+          <h2>Express how you feel. Let it all out!</h2>
+        </div>
+
+      <div className={custom.entryCard}>
+
+
         <Editor
           tag="pre"
           className="editor hideOverflow"
@@ -104,6 +113,9 @@ class Entry extends React.Component {
         </Button>
         <p>{this.state.sentiment}</p>
 
+      </div>
+
+      </div>
       </div>
     );
   }

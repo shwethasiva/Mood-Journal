@@ -11,7 +11,9 @@ class Entry extends React.Component {
 		//const mood = card.sentiment.document_tone.tones[0].tone_name;
 
 		return (
-			<div className="container">
+			
+
+			<div className={custom.entryCard}>
 
 			<div className={custom.date}>
 					<div>{card.date.slice(0,10)}</div>
@@ -23,21 +25,23 @@ class Entry extends React.Component {
 					<h3>{card.title}</h3>
 				</div>
 
-					<div className="col-xs-4">
-						<h3>Mood Detected: {card.sentiment.tone_name}</h3>
-						<Graph tones={card.sentiment} />
-
-
-					</div>
-
+				<div className="col-xs-4">
+					<h3>Mood Detected: {card.sentiment.tone_name}</h3>
+				</div>
+			
 			</div>
 
-			<div dangerouslySetInnerHTML={{__html: card.text}} />
+			<div className="row">
 
+				<div className="col-xs-8">
+					<div dangerouslySetInnerHTML={{__html: card.text}} />
+				</div>
 
-
-
-			<h4>Preview</h4>
+				<div className="col-xs-4">
+					<Graph tones={card.sentiment} />
+				</div>
+			
+			</div>
 
 			</div>
 			);

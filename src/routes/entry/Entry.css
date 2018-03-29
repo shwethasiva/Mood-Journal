@@ -1,3 +1,37 @@
+.container {
+	margin: 0 auto;
+  	max-width: 1000px;
+	align-items: center;
+	font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+	color: #00549E;
+}
+
+h2 {
+	font-size: 120%;
+}
+
+.topOfPage {
+	margin-top: 7%;
+	margin-bottom: 7%;
+	text-align: center;
+}
+
+.entryCard {
+	box-shadow: 0px 2px 8px lightgray;
+	margin: 0;
+	padding: 3%;
+	max-width: 1000px;
+	font-family: 'Open Sans', sans-serif;
+	border-radius: 5px;
+}
+
+.entryCard h1 {
+	text-align: center;
+}
+
 .editorBorder:focus{
   outline: none;
 }

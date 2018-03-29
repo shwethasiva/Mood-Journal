@@ -45,9 +45,7 @@ class Navigation extends React.Component {
             <Link className={cx(s.link, s.highlight)} to="/entries">
             My Entries
           </Link>
-            <Link className={cx(s.link, s.highlight)} to="/watson">
-            Insights
-          </Link>
+
           </div>
 
           <div className={cx(s.menu_res, this.state.isToggleOn ? s.on : s.off)} onClick={this.toggleMenu}>

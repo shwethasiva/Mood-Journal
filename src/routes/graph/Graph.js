@@ -31,16 +31,21 @@ class Graph extends React.Component {
       const tones = this.props.tones;
       return(
         <div>
-          <p>testing</p>
+          <p>Intensity: {Math.round(tones.score * 100)}%</p>
           <BarChart
           axes
-          barWidth={20}
+          width = {100}
+          height = {100}
+          yTickNumber={2}
+          //barWidth={1}
           yDomainRange={[0,1]}
+          margin={{top: 5, right: 10, bottom: 10, left: 30}}
               data={
                 [
                   {
                     x: tones.tone_id,
-                    y: tones.score
+                    y: tones.score,
+                    color: '#00549E',
                   }
                 ]
               }
