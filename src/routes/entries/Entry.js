@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import custom from './entries.css';
 import bootstrap from 'react-bootstrap';
+import Graph from '../graph/Graph'
 
 class Entry extends React.Component {
 
@@ -24,9 +25,7 @@ class Entry extends React.Component {
 
 					<div className="col-xs-4">
 						<h3>Mood Detected: {card.sentiment.tone_name}</h3>
-					<ul>
-
-        			</ul>
+						<Graph tones={card.sentiment} />
 
 
 					</div>
