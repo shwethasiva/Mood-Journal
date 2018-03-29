@@ -21,6 +21,7 @@ import Parallax from 'react-springy-parallax';
 import Editor from 'react-medium-editor';
 import Button from 'react-bootstrap/lib/Button';
 import FormErrors from './FormErrors'
+import Graph from '../graph/Graph'
 import {connect} from 'react-redux';
 
 // Import Components
@@ -31,9 +32,11 @@ class Entry extends React.Component {
       value: '',
       title: "",
       text: "",
+      sentiment:  [],
       formErrors: {title: '', text: ''},
     titleValid: false,
-    textValid: false
+    textValid: false,
+    requestSent: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -55,16 +58,17 @@ class Entry extends React.Component {
     event.preventDefault();
   }
   clickHandler(){
+    let self = this;
     let entry = {}
     entry.title = this.state.title;
     entry.text = this.state.text;
-    console.log(entry);
     axios({
       method: 'post',
       url: '/api/entries/create',
       data: entry
     }).then(function(response){
-      console.log(response);
+      console.log(response)
+      //self.setState({sentiment: response.sentiment.document_tone.tones[0]})
     })
 
   }
@@ -95,8 +99,13 @@ class Entry extends React.Component {
         }}}
         />
         <Button onClick={this.clickHandler}>
-        Testing
+        Done!
         </Button>
+        {
+          this.state.requestSent &&
+        <Graph tones={this.state.sentiment} />
+       }
+
       </div>
     );
   }

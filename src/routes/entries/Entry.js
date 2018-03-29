@@ -7,10 +7,7 @@ class Entry extends React.Component {
 
 	render () {
 		const card = this.props.card;
-		for 
-		const mood = card.sentiment.document_tone.tones[0].tone_name;
-		console.log(mood)
-
+		//const mood = card.sentiment.document_tone.tones[0].tone_name;
 
 		return (
 			<div className="container">
@@ -20,17 +17,15 @@ class Entry extends React.Component {
 					</div>
 
 			<div className="row">
-				
+
 				<div className="col-xs-8">
 					<h3>{card.title}</h3>
 				</div>
 
 					<div className="col-xs-4">
-						<h3>Mood Detected: {card.sentiment.document_tone.tones[0][tone_name]}</h3>
+						<h3>Mood Detected: {card.sentiment.tone_name}</h3>
 					<ul>
-          				{this.props.list.map(function(listValue){
-            			return <li>{listValue}</li>;
-          				})}
+
         			</ul>
 
 
@@ -40,9 +35,9 @@ class Entry extends React.Component {
 
 			<div dangerouslySetInnerHTML={{__html: card.text}} />
 
-			
-				
-			
+
+
+
 			<h4>Preview</h4>
 
 			</div>
