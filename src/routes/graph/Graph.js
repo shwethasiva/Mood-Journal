@@ -39,8 +39,8 @@ class Graph extends React.Component {
               data={
                 [
                   {
-                    x: this.state.tones[0].tone_name,
-                    y: this.state.tones[0].score
+                    x: tones.tone_id,
+                    y: tones.score
                   }
                 ]
               }

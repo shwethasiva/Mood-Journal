@@ -32,7 +32,7 @@ class Entry extends React.Component {
       value: '',
       title: "",
       text: "",
-      sentiment:  [],
+      sentiment: "",
       formErrors: {title: '', text: ''},
     titleValid: false,
     textValid: false,
@@ -67,9 +67,10 @@ class Entry extends React.Component {
       url: '/api/entries/create',
       data: entry
     }).then(function(response){
-      console.log(response)
-      //self.setState({sentiment: response.sentiment.document_tone.tones[0]})
+      console.log(response.sentiment)
+      self.setState({sentiment: response.sentiment})
     })
+    this.state.requestSent = true;
 
   }
 
@@ -98,13 +99,10 @@ class Entry extends React.Component {
           hideOnClick: true
         }}}
         />
-        <Button onClick={this.clickHandler}>
+        <Button onClick={this.clickHandler} href="/entries">
         Done!
         </Button>
-        {
-          this.state.requestSent &&
-        <Graph tones={this.state.sentiment} />
-       }
+        <p>{this.state.sentiment}</p>
 
       </div>
     );
